@@ -82,6 +82,8 @@ public class Tugas {
                                                 System.out.println("Opsi salah");
                                                 break;
                                         }
+                                    } else {
+                                        c = false;
                                     }
                                 } else {
                                     System.out.println("Mohon maaf anda tidak melakukan");
