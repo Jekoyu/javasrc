@@ -228,7 +228,34 @@ public class Tugas {
                     insertBeasiswa(beasiswa, "BSW");
                     break;
                 case 2:
-                    urutkan(beasiswa, 0);
+                    if (beasiswa[2][0] != null) {
+                        System.out.println("Urutkan Berdasar!");
+                        System.out.println("1. No Daftar");
+                        System.out.println("2. NIK");
+                        System.out.println("3. Nama");
+                        System.out.println("4. Kelulusan");
+                        System.out.println("5. Prodi");
+                        System.out.print("Pilih(1-5): ");
+                        int a = input.nextInt();
+                        switch (a) {
+                            case 1:
+                                urutkan(beasiswa, 0);
+                                break;
+                            case 2:
+                                urutkan(beasiswa, 1);
+                                break;
+                            case 3:
+                                urutkan(beasiswa, 2);
+                                break;
+                            case 4:
+                                urutkan(beasiswa, 9);
+                                break;
+                            case 5:
+                                urutkan(beasiswa, 10);
+                            default:
+                                System.out.println("Opsi tidak ada");
+                        }
+                    }
                     System.out.println("Data Mahasiswa");
                     tampilBeasiswa(beasiswa);
                     break;
