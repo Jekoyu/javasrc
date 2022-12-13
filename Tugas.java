@@ -212,6 +212,7 @@ public class Tugas {
         }
     }
 
+
     public static void beasiswa() {
         boolean c = true;
         do {
@@ -227,6 +228,7 @@ public class Tugas {
                     insertBeasiswa(beasiswa, "BSW");
                     break;
                 case 2:
+                    urutkan(beasiswa, 0);
                     System.out.println("Data Mahasiswa");
                     tampilBeasiswa(beasiswa);
                     break;
@@ -278,6 +280,28 @@ public class Tugas {
         String b = Integer.toString(a);
         String nodaftar = c + b;
         return nodaftar;
+    }
+
+    public static String[][] urutkan(String array[][], int u) {
+        System.out.println("\n>Urutkan Data Mahasiswa");
+        int flag;
+        String temp[] = new String[array.length];
+        for (int i = 0; i < array.length; i++) {
+            flag = i;
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[j][u].compareTo(array[flag][u]) < 0)
+                    flag = j;
+            }
+            if (flag != 1) {
+                for (int j = 0; j < temp.length; j++)
+                    temp[j] = array[i][j];
+                for (int j = 0; j < temp.length; j++)
+                    array[i][j] = array[flag][j];
+                for (int j = 0; j < temp.length; j++)
+                    array[flag][j] = temp[j];
+            }
+        }
+        return array;
     }
 
     public static void main(String[] args) {
