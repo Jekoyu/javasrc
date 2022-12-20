@@ -109,7 +109,9 @@ public class Tugas {
     }
 
     public static void insertBeasiswa(String array[][], String nama) {
-        try {}
+        boolean c = true;
+        try {
+            do {
                 int i = 0;
                 if (array[i][0] != null) {
                     i++;
