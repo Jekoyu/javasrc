@@ -27,7 +27,7 @@ public class Tugas {
                 if (array[i][0] == null) {
                     for (int j = 0; j < array[i].length; j++) {
                         if (j == 0) {
-                            array[i][0] = nodaftar(array, nama);
+                            array[i][0] = nodaftar(regular, nama);
                         } else if (j == 1) {
                             System.out.print("Masukkan NIK\t:");
                             array[i][1] = in.readLine();
@@ -108,7 +108,7 @@ public class Tugas {
         }
     }
 
-    public static void insertBeasiswa(String array[][], String nama) {
+    public static void insertBeasiswa(String array[][]) {
         boolean c = true;
         try {
             do {
@@ -119,7 +119,7 @@ public class Tugas {
                 if (array[i][0] == null) {
                     for (int j = 0; j < array[i].length; j++) {
                         if (j == 0) {
-                            array[i][0] = nodaftar(array, nama);
+                            array[i][0] = nodaftar(beasiswa, "BSW");
                         } else if (j == 1) {
                             System.out.print("Masukkan NIK\t:");
                             array[i][1] = in.readLine();
@@ -231,7 +231,7 @@ public class Tugas {
             switch (pil) {
                 case 1:
                     System.out.println("Masukkan Data Pendaftar!!");
-                    insertBeasiswa(beasiswa, "BSW");
+                    insertBeasiswa(beasiswa);
                     break;
                 case 2:
                     if (beasiswa[1][0] != null) {
@@ -306,9 +306,13 @@ public class Tugas {
 
     public static String nodaftar(String arr[][], String a) {
         String re = "";
-        for (int i = 0; i < arr.length; i++) {
+        for (int i = 0; i < 10; i++) {
+            if (arr[i][0] == null) {
+                re = a + String.format("%04d", (i + 1));
+                break;
+            }
             if (!arr[i][0].equals(a + String.format("%04d", i))) {
-                re = a + String.format("%04d", i);
+                re = a + String.format("%04d", (i));
             }
         }
         return re;
@@ -356,6 +360,5 @@ public class Tugas {
                     break;
             }
         } while (pil != 0);
-
     }
 }
