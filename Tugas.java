@@ -1,4 +1,3 @@
-import java.util.Random;
 import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -11,6 +10,12 @@ public class Tugas {
     static String regular[][] = new String[10][10];
     static String biaya = "Rp. 1.500.000,00";
 
+    public static void judul(String a) {
+        System.out.println("==========================================");
+        System.out.println("\t" + a);
+        System.out.println("==========================================");
+    }
+
     static void insertRegular(String array[][], String nama) {
         boolean c = true;
         try {
@@ -22,7 +27,7 @@ public class Tugas {
                 if (array[i][0] == null) {
                     for (int j = 0; j < array[i].length; j++) {
                         if (j == 0) {
-                            array[i][0] = nodaftar(nama);
+                            array[i][0] = nodaftar(array, nama);
                         } else if (j == 1) {
                             System.out.print("Masukkan NIK\t:");
                             array[i][1] = in.readLine();
@@ -104,9 +109,7 @@ public class Tugas {
     }
 
     public static void insertBeasiswa(String array[][], String nama) {
-        boolean c = true;
-        try {
-            do {
+        try {}
                 int i = 0;
                 if (array[i][0] != null) {
                     i++;
@@ -114,7 +117,7 @@ public class Tugas {
                 if (array[i][0] == null) {
                     for (int j = 0; j < array[i].length; j++) {
                         if (j == 0) {
-                            array[i][0] = nodaftar(nama);
+                            array[i][0] = nodaftar(array, nama);
                         } else if (j == 1) {
                             System.out.print("Masukkan NIK\t:");
                             array[i][1] = in.readLine();
@@ -189,6 +192,7 @@ public class Tugas {
     }
 
     public static void tampilBeasiswa(String array[][]) {
+        judul("Pendaftar Beasiswa");
         System.out.println("NoDaftar\tNIK\t\tNama\t\tJK\tAgama\tNISN\t\tAlamat\tTes Tulis\tTes Wawancara\t\tStatus\t");
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {
@@ -201,6 +205,7 @@ public class Tugas {
     }
 
     public static void tampilRegular(String array[][]) {
+        System.out.println("Pendaftar Regular");
         System.out.println("NoDaftar\tNIK\t\tNama\t\tJK\tAgama\tNISN\t\tAlamat\tNilai UTBK\tStatus\t");
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {
@@ -212,23 +217,22 @@ public class Tugas {
         }
     }
 
-
     public static void beasiswa() {
-        boolean c = true;
+        judul("Program Pendaftaran Beasiswa");
+        System.out.println("1. Input Pendaftar");
+        System.out.println("2. Liat Pendaftar");
+        System.out.println("0. Keluar");
+        System.out.print("Masukkan pilihan: ");
+        int pil = input.nextInt();
         do {
-            System.out.println("===== SISTEM PENDAFTARAN BEASISWA =====");
-            System.out.println("1. Input Pendaftar");
-            System.out.println("2. Liat Pendaftar");
-            System.out.println("0. Keluar");
-            System.out.print("Masukkan pilihan: ");
-            int pil = input.nextInt();
+
             switch (pil) {
                 case 1:
                     System.out.println("Masukkan Data Pendaftar!!");
                     insertBeasiswa(beasiswa, "BSW");
                     break;
                 case 2:
-                    if (beasiswa[2][0] != null) {
+                    if (beasiswa[1][0] != null) {
                         System.out.println("Urutkan Berdasar!");
                         System.out.println("1. No Daftar");
                         System.out.println("2. NIK");
@@ -261,25 +265,23 @@ public class Tugas {
                     break;
                 case 0:
                     System.out.println("Anda akan diarahkan ke awal ....");
-                    c = false;
                     break;
                 default:
                     System.out.println("Opsi tidak ada");
                     break;
             }
 
-        } while (c == true);
+        } while (pil != 0);
     }
 
     public static void regular() {
-        boolean c = true;
+        judul("Program Pendaftaran Regular");
+        System.out.println("1. Input Pendaftar");
+        System.out.println("2. Liat Pendaftar");
+        System.out.println("0. Keluar");
+        System.out.print("Masukkan pilihan: ");
+        int pil = input.nextInt();
         do {
-            System.out.println("===== SISTEM PENDAFTARAN REGULAR =====");
-            System.out.println("1. Input Pendaftar");
-            System.out.println("2. Liat Pendaftar");
-            System.out.println("0. Keluar");
-            System.out.print("Masukkan pilihan: ");
-            int pil = input.nextInt();
             switch (pil) {
                 case 1:
                     System.out.println("Masukkan Data Pendaftar!!");
@@ -291,26 +293,27 @@ public class Tugas {
                     break;
                 case 0:
                     System.out.println("Anda akan diarahkan ke awal ....");
-                    c = false;
                     break;
                 default:
                     System.out.println("Opsi tidak ada");
                     break;
             }
 
-        } while (c == true);
+        } while (pil != 0);
     }
 
-    public static String nodaftar(String c) {
-        Random random = new Random();
-        int a = random.nextInt(100 - 1) + 1;
-        String b = Integer.toString(a);
-        String nodaftar = c + b;
-        return nodaftar;
+    public static String nodaftar(String arr[][], String a) {
+        String re = "";
+        for (int i = 0; i < arr.length; i++) {
+            if (!arr[i][0].equals(a + String.format("%04d", i))) {
+                re = a + String.format("%04d", i);
+            }
+        }
+        return re;
     }
 
     public static String[][] urutkan(String array[][], int u) {
-        System.out.println("\n>Urutkan Data Mahasiswa");
+        judul("Urutan data Mahasiswa");
         int flag;
         String temp[] = new String[array.length];
         for (int i = 0; i < array.length; i++) {
@@ -332,17 +335,13 @@ public class Tugas {
     }
 
     public static void main(String[] args) {
-        boolean c = true;
+        judul("Sistem Pendaftaran Mahasiswa Baru");
+        System.out.println("1. Beasiswa");
+        System.out.println("2. Regular");
+        System.out.println("0. Keluar");
+        System.out.print("Pilihan :");
+        int pil = input.nextInt();
         do {
-            System.out.println("===== SISTEM PENDAFTARAN MAHASISWA =====");
-            System.out.println("========================================");
-            System.out.println("=========================================");
-            System.out.println("\t\tProgram Pendaftaran");
-            System.out.println("1. Beasiswa");
-            System.out.println("2. Regular");
-            System.out.println("0. Keluar");
-            System.out.print("Pilihan :");
-            int pil = input.nextInt();
             switch (pil) {
                 case 1:
                     beasiswa();
@@ -352,10 +351,9 @@ public class Tugas {
                     break;
                 case 0:
                     System.out.println("Bye....");
-                    c = false;
                     break;
             }
-        } while (c == true);
+        } while (pil != 0);
 
     }
 }

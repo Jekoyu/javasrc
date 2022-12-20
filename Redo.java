@@ -73,24 +73,51 @@ public class Redo {
         for (int i = 0 ;i<array.length;i++){
             for(int j = 0 ;j<array[i].length;j++){
                 if(array[i][j] != null){
-                System.out.println(array[i][j]);
+                    System.out.print(array[i][j] + "\t");
             }
             }
+            System.out.println();
         }
     }
 
-    public static void main(String[] args) {
-        
-        
-        String array[][] = new String [10][10];
-        insert2(array);
-        System.out.print("add:");
-        show(array);
-        int a = input.nextInt();
-        if(a==1){
-            insert(array);
-            show(array);
+    public static String[][] urutkan(String array[][], int u) {
+        System.out.println("\n>Urutkan Data Mahasiswa");
+        int flag;
+        String temp[] = new String[array.length];
+        for (int i = 0; i < array.length; i++) {
+            flag = i;
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[j][u].compareTo(array[flag][u]) < 0)
+                    flag = j;
+            }
+            if (flag != 1) {
+                for (int j = 0; j < temp.length; j++)
+                    temp[j] = array[i][j];
+                for (int j = 0; j < temp.length; j++)
+                    array[i][j] = array[flag][j];
+                for (int j = 0; j < temp.length; j++)
+                    array[flag][j] = temp[j];
+            }
         }
+        return array;
+    }
+    public static void main(String[] args) {
+        String arr[][] = { { "01230123", "Bagas Prasetyo", "asdjhasd", "b123213" },
+                { "242312312", "Reno Barak", "asdhqd", "B2309312" },
+                { "1826319312", "sadabsda", "adsahdqw", "12937123" },
+                { "192368231", "Basads", "qdhqdnqqdw", "12371892" } };
+        show(arr);
+        urutkan(arr, 0);
+        show(arr);
+        // String array[][] = new String [10][10];
+        // insert2(array);
+        // System.out.print("add:");
+        // show(array);
+        // int a = input.nextInt();
+        // if(a==1){
+        // insert(array);
+        // show(array);
+        // }
         // boolean c = true;
         // do{
         // System.out.print("data :");
