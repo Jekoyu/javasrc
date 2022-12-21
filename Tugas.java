@@ -59,7 +59,7 @@ public class Tugas {
                                 array[i][8] = "LULUS";
 
                                 if (j == 8) {
-                                    System.out.println("Selamat anda Lulus");
+                                    judul("Selamat anda lulus!");
                                     System.out.println("Biaya Daftar ulang: " + biaya);
                                     System.out.print("Daftar Ulang (Y/T)?:");
                                     String du = in.readLine().toUpperCase();
@@ -137,7 +137,7 @@ public class Tugas {
                         } else if (j == 6) {
                             System.out.print("Alamat\t\t\t:");
                             array[i][6] = in.readLine();
-                            judul("Inputkan Nilai UTBK");
+                            judul("Inputkan Nilai TES");
                             System.out.println("No Daftar\t\t: " + array[i][0]);
                             System.out.println("Nama\t\t\t: " + array[i][2]);
                         } else if (j == 7) {
@@ -154,7 +154,7 @@ public class Tugas {
                             if (a >= 70 && b >= 75) {
                                 array[i][9] = "LULUS";
                                 if (j == 10) {
-                                    System.out.println("Selamat anda Lulus");
+                                    judul("Selamat anda lulus!");
                                     System.out.println("Pilih Prodi:");
                                     System.out.println("1. Sistem Informasi");
                                     System.out.println("2. T. Informatika");
@@ -197,11 +197,15 @@ public class Tugas {
     public static void tampilBeasiswa(String array[][]) {
         judul("Pendaftar Beasiswa");
         System.out.println(
-                "NoDaftar\tNIK\tNama\tJK\tAgama\tNISN\tAlamat\tTes Tulis\tTes Wawancara\tStatus\tJurusan");
+                "NoDaftar NIK\tNama\t\tJK\tAgama\tNISN\tAlamat\tTes Tulis\tTes Wawancara\tStatus\tJurusan");
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {
                 if (array[i][j] != null) {
-                    System.out.print(array[i][j] + "\t");
+                    if (array[i][j].length() < 8) {
+                        System.out.print(array[i][j] + "\t");
+                    } else {
+                        System.out.print(array[i][j] + " ");
+                    }
                 }
             }
             if (array[i][0] != null) {
@@ -217,7 +221,11 @@ public class Tugas {
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {
                 if (array[i][j] != null) {
-                    System.out.print(array[i][j] + "\t");
+                    if (array[i][j].length() < 8) {
+                        System.out.print(array[i][j] + "\t");
+                    } else {
+                        System.out.print(array[i][j] + " ");
+                    }
                 }
             }
             if (array[i][0] != null) {
@@ -239,35 +247,35 @@ public class Tugas {
                 insertBeasiswa(beasiswa);
                 break;
             case 2:
-                if (beasiswa[1][0] != null) {
-                    System.out.println("Urutkan Berdasar!");
-                    System.out.println("1. No Daftar");
-                    System.out.println("2. NIK");
-                    System.out.println("3. Nama");
-                    System.out.println("4. Kelulusan");
-                    System.out.println("5. Prodi");
-                    System.out.print("Pilih(1-5): ");
-                    int a = input.nextInt();
-                    switch (a) {
-                        case 1:
-                            urutkan(beasiswa, 0);
-                            break;
-                        case 2:
-                            urutkan(beasiswa, 1);
-                            break;
-                        case 3:
-                            urutkan(beasiswa, 2);
-                            break;
-                        case 4:
-                            urutkan(beasiswa, 9);
-                            break;
-                        case 5:
-                            urutkan(beasiswa, 10);
-                        default:
-                            System.out.println("Opsi tidak ada");
-                    }
-                }
-                System.out.println("Data Mahasiswa");
+                // if (beasiswa[1][0] != null) {
+                // System.out.println("Urutkan Berdasar!");
+                // System.out.println("1. No Daftar");
+                // System.out.println("2. NIK");
+                // System.out.println("3. Nisn");
+                // System.out.println("4. Niilai Tes Tulis");
+                // System.out.println("5. Nilai Tes Wawancara");
+                // System.out.print("Pilih(1-5): ");
+                // int a = input.nextInt();
+                // switch (a) {
+                // case 1:
+                // urutkan(beasiswa, 0);
+                // break;
+                // case 2:
+                // urutkan(beasiswa, 1);
+                // break;
+                // case 3:
+                // urutkan(beasiswa, 5);
+                // break;
+                // case 4:
+                // urutkan(beasiswa, 7);
+                // break;
+                // case 5:
+                // urutkan(beasiswa, 8);
+                // default:
+                // System.out.println("Opsi tidak ada");
+                // }
+                // }
+                judul("Data Mahasiswa");
                 tampilBeasiswa(beasiswa);
                 break;
             case 0:
@@ -322,6 +330,7 @@ public class Tugas {
 
     public static String[][] urutkan(String array[][], int u) {
         judul("Urutan data Mahasiswa");
+
         int flag;
         String temp[] = new String[array.length];
         int k = 0;
@@ -329,30 +338,11 @@ public class Tugas {
             k++;
         }
         // if (a.equals("asc")) {
-        for (int i = 0; i < k; i++) {
-            flag = i;
-            if (array[i + 1][0] != null) {
-                for (int j = i + 1; j < array.length; j++) {
-                    if (array[j][u].compareTo(array[flag][u]) < 0)
-                        flag = j;
-                }
-                if (flag != 1) {
-                    for (int j = 0; j < temp.length; j++)
-                        temp[j] = array[i][j];
-                    for (int j = 0; j < temp.length; j++)
-                        array[i][j] = array[flag][j];
-                    for (int j = 0; j < temp.length; j++)
-                        array[flag][j] = temp[j];
-                }
-            } else {
-                System.out.println("edn");
-            }
-        }
-        // } else if (a.equals("desc")) {
+
         // for (int i = 0; i < array.length; i++) {
         // flag = i;
         // for (int j = i + 1; j < array.length; j++) {
-        // if (array[j][u].compareTo(array[flag][u]) > 0)
+        // if (Integer.parseInt(array[j][u]) < Integer.parseInt(array[flag][u]))
         // flag = j;
         // }
         // if (flag != 1) {
@@ -364,8 +354,41 @@ public class Tugas {
         // array[flag][j] = temp[j];
         // }
         // }
-        // }
+        if (u == 0) {
+            for (int i = 0; i < k + 1; i++) {
+                flag = i;
+                for (int j = i + 1; j < k + 1; j++) {
+                    if (Integer.parseInt(array[j][u].substring(3)) < Integer.parseInt(array[flag][u].substring(3)))
+                        flag = j;
+                }
+                if (flag != 1) {
+                    for (int j = 0; j < temp.length; j++)
+                        temp[j] = array[i][j];
+                    for (int j = 0; j < temp.length; j++)
+                        array[i][j] = array[flag][j];
+                    for (int j = 0; j < temp.length; j++)
+                        array[flag][j] = temp[j];
+                }
+            }
+        } else {
+            for (int i = 0; i < k + 1; i++) {
+                flag = i;
+                for (int j = i + 1; j < k + 1; j++) {
+                    if (Integer.parseInt(array[j][u]) < Integer.parseInt(array[flag][u]))
+                        flag = j;
+                }
+                if (flag != 1) {
+                    for (int j = 0; j < temp.length; j++)
+                        temp[j] = array[i][j];
+                    for (int j = 0; j < temp.length; j++)
+                        array[i][j] = array[flag][j];
+                    for (int j = 0; j < temp.length; j++)
+                        array[flag][j] = temp[j];
+                }
+            }
+        }
         return array;
+
     }
 
     public static void main(String[] args) {
