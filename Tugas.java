@@ -235,83 +235,88 @@ public class Tugas {
     }
 
     public static void beasiswa() {
-        judul("Program Pendaftaran Beasiswa");
-        System.out.println("1. Input Pendaftar");
-        System.out.println("2. Liat Pendaftar");
-        System.out.println("0. Keluar");
-        System.out.print("Masukkan pilihan: ");
-        int pil = input.nextInt();
-        switch (pil) {
-            case 1:
-                System.out.println("Masukkan Data Pendaftar!!");
-                insertBeasiswa(beasiswa);
-                break;
-            case 2:
-                // if (beasiswa[1][0] != null) {
-                // System.out.println("Urutkan Berdasar!");
-                // System.out.println("1. No Daftar");
-                // System.out.println("2. NIK");
-                // System.out.println("3. Nisn");
-                // System.out.println("4. Niilai Tes Tulis");
-                // System.out.println("5. Nilai Tes Wawancara");
-                // System.out.print("Pilih(1-5): ");
-                // int a = input.nextInt();
-                // switch (a) {
-                // case 1:
-                // urutkan(beasiswa, 0);
-                // break;
-                // case 2:
-                // urutkan(beasiswa, 1);
-                // break;
-                // case 3:
-                // urutkan(beasiswa, 5);
-                // break;
-                // case 4:
-                // urutkan(beasiswa, 7);
-                // break;
-                // case 5:
-                // urutkan(beasiswa, 8);
-                // default:
-                // System.out.println("Opsi tidak ada");
-                // }
-                // }
-                judul("Data Mahasiswa");
-                tampilBeasiswa(beasiswa);
-                break;
-            case 0:
-                System.out.println("Anda akan diarahkan ke awal ....");
-                break;
-            default:
-                System.out.println("Opsi tidak ada");
-                break;
-        }
+        int pil = 5;
+        do {
+            judul("Program Pendaftaran Beasiswa");
+            System.out.println("1. Input Pendaftar");
+            System.out.println("2. Liat Pendaftar");
+            System.out.println("0. Keluar");
+            System.out.print("Masukkan pilihan: ");
+            pil = input.nextInt();
+            switch (pil) {
+                case 1:
+                    System.out.println("Masukkan Data Pendaftar!!");
+                    insertBeasiswa(beasiswa);
+                    break;
+                case 2:
+                    // if (beasiswa[1][0] != null) {
+                    // System.out.println("Urutkan Berdasar!");
+                    // System.out.println("1. No Daftar");
+                    // System.out.println("2. NIK");
+                    // System.out.println("3. Nisn");
+                    // System.out.println("4. Niilai Tes Tulis");
+                    // System.out.println("5. Nilai Tes Wawancara");
+                    // System.out.print("Pilih(1-5): ");
+                    // int a = input.nextInt();
+                    // switch (a) {
+                    // case 1:
+                    // urutkan(beasiswa, 0);
+                    // break;
+                    // case 2:
+                    // urutkan(beasiswa, 1);
+                    // break;
+                    // case 3:
+                    // urutkan(beasiswa, 5);
+                    // break;
+                    // case 4:
+                    // urutkan(beasiswa, 7);
+                    // break;
+                    // case 5:
+                    // urutkan(beasiswa, 8);
+                    // default:
+                    // System.out.println("Opsi tidak ada");
+                    // }
+                    // }
+                    judul("Data Mahasiswa");
+                    tampilBeasiswa(beasiswa);
+                    break;
+                case 0:
+                    System.out.println("Anda akan diarahkan ke awal ....");
+                    break;
+                default:
+                    System.out.println("Opsi tidak ada");
+                    break;
+            }
+        } while (pil != 0);
 
     }
 
     public static void regular() {
-        judul("Program Pendaftaran Regular");
-        System.out.println("1. Input Pendaftar");
-        System.out.println("2. Liat Pendaftar");
-        System.out.println("0. Keluar");
-        System.out.print("Masukkan pilihan: ");
-        int pil = input.nextInt();
-
-        switch (pil) {
-            case 1:
-                System.out.println("Masukkan Data Pendaftar!!");
-                insertRegular(regular, "RGL");
-                break;
-            case 2:
-                System.out.println("Data Mahasiswa");
-                tampilRegular(regular);
-                break;
-            case 0:
-                System.out.println("Anda akan diarahkan ke awal ....");
-                break;
-            default:
-                System.out.println("Opsi tidak ada");
-                break;
-        }
+        int pil = 5;
+        do {
+            judul("Program Pendaftaran Regular");
+            System.out.println("1. Input Pendaftar");
+            System.out.println("2. Liat Pendaftar");
+            System.out.println("0. Keluar");
+            System.out.print("Masukkan pilihan: ");
+            pil = input.nextInt();
+            switch (pil) {
+                case 1:
+                    System.out.println("Masukkan Data Pendaftar!!");
+                    insertRegular(regular, "RGL");
+                    break;
+                case 2:
+                    System.out.println("Data Mahasiswa");
+                    tampilRegular(regular);
+                    break;
+                case 0:
+                    System.out.println("Anda akan diarahkan ke awal ....");
+                    break;
+                default:
+                    System.out.println("Opsi tidak ada");
+                    break;
+            }
+        } while (pil != 0);
     }
 
     public static String nodaftar(String arr[][], String a) {
@@ -392,13 +397,15 @@ public class Tugas {
     }
 
     public static void main(String[] args) {
-        judul("Sistem Pendaftaran Mahasiswa Baru");
-        System.out.println("1. Beasiswa");
-        System.out.println("2. Regular");
-        System.out.println("0. Keluar");
-        System.out.print("Pilihan :");
-        int pil = input.nextInt();
+
+        int pil = 5;
         do {
+            judul("Sistem Pendaftaran Mahasiswa Baru");
+            System.out.println("1. Beasiswa");
+            System.out.println("2. Regular");
+            System.out.println("0. Keluar");
+            System.out.print("Pilihan :");
+            pil = input.nextInt();
             switch (pil) {
                 case 1:
                     beasiswa();
