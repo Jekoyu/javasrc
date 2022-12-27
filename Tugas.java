@@ -396,8 +396,7 @@ public class Tugas {
 
     }
 
-    public static void main(String[] args) {
-
+    public static void input() {
         int pil = 5;
         do {
             judul("Sistem Pendaftaran Mahasiswa Baru");
@@ -418,5 +417,55 @@ public class Tugas {
                     break;
             }
         } while (pil != 0);
+    }
+
+    public static void cek() {
+        judul("Cek Kelulusan Mahasiswa");
+        System.out.print("Inputkan NISN\t:");
+        int nisn = input.nextInt();
+        for (int i = 0; i < 10; i++) {
+            if (beasiswa[i][0] != null || regular[i][0] != null) {
+                if (nisn == Integer.parseInt(beasiswa[i][5])) {
+                    System.out.print("Nama\t: " + beasiswa[i][2]);
+                    System.out.print("NISN\t: " + beasiswa[i][5]);
+                    System.out.print("Kelulusan: " + beasiswa[i][9]);
+                    break;
+                } else if (nisn == Integer.parseInt(regular[i][5])) {
+                    System.out.print("Nama\t: " + regular[i][2]);
+                    System.out.print("NISN\t: " + regular[i][5]);
+                    System.out.print("Kelulusan: " + regular[i][8]);
+                    break;
+                } else {
+                    System.out.println("Data tidak ditemukan!");
+                    break;
+                }
+            } else {
+                System.out.println("Data tidak ditemukan!");
+                break;
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        int pil = 5;
+        do {
+            judul("Sistem Pendaftar Mahasiswa Baru");
+            System.out.println("1. Input Data");
+            System.out.println("2. Cek Kelulusan");
+            System.out.println("0. Keluar");
+            System.out.print("Pilihan : ");
+            pil = input.nextInt();
+            switch (pil) {
+                case 1:
+                    input();
+                    break;
+                case 2:
+                    cek();
+                    break;
+                default:
+                    break;
+            }
+        } while (pil != 0);
+
     }
 }
