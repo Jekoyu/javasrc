@@ -197,7 +197,7 @@ public class Tugas {
     public static void tampilBeasiswa(String array[][]) {
         judul("Pendaftar Beasiswa");
         System.out.println(
-                "NoDaftar NIK\tNama\t\tJK\tAgama\tNISN\tAlamat\tTes Tulis\tTes Wawancara\tStatus\tJurusan");
+                "NoDaftar\tNIK\t\tNama\t\tJK\tAgama\tNISN\tAlamat\tTes Tulis\tTes Wawancara\tStatus\tJurusan");
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {
                 if (array[i][j] != null) {
