@@ -2,6 +2,8 @@ import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Comparator;
 
 public class Tugas {
     static Scanner input = new Scanner(System.in);
@@ -249,35 +251,35 @@ public class Tugas {
                     insertBeasiswa(beasiswa);
                     break;
                 case 2:
-                    // if (beasiswa[1][0] != null) {
-                    // System.out.println("Urutkan Berdasar!");
-                    // System.out.println("1. No Daftar");
-                    // System.out.println("2. NIK");
-                    // System.out.println("3. Nisn");
-                    // System.out.println("4. Niilai Tes Tulis");
-                    // System.out.println("5. Nilai Tes Wawancara");
-                    // System.out.print("Pilih(1-5): ");
-                    // int a = input.nextInt();
-                    // switch (a) {
-                    // case 1:
-                    // urutkan(beasiswa, 0);
-                    // break;
-                    // case 2:
-                    // urutkan(beasiswa, 1);
-                    // break;
-                    // case 3:
-                    // urutkan(beasiswa, 5);
-                    // break;
-                    // case 4:
-                    // urutkan(beasiswa, 7);
-                    // break;
-                    // case 5:
-                    // urutkan(beasiswa, 8);
-                    // default:
-                    // System.out.println("Opsi tidak ada");
-                    // }
-                    // }
-                    judul("Data Mahasiswa");
+                    if (beasiswa[1][0] != null) {
+                        System.out.println("Urutkan Berdasar!");
+                        System.out.println("1. No Daftar");
+                        System.out.println("2. NIK");
+                        System.out.println("3. Nisn");
+                        System.out.println("4. Niilai Tes Tulis");
+                        System.out.println("5. Nilai Tes Wawancara");
+                        System.out.print("Pilih(1-5): ");
+                        int a = input.nextInt();
+                        switch (a) {
+                            case 1:
+                                urutkan(beasiswa, 0);
+                                break;
+                            case 2:
+                                urutkan(beasiswa, 1);
+                                break;
+                            case 3:
+                                urutkan(beasiswa, 5);
+                                break;
+                            case 4:
+                                urutkan(beasiswa, 7);
+                                break;
+                            case 5:
+                                urutkan(beasiswa, 8);
+                            default:
+                                System.out.println("Opsi tidak ada");
+                        }
+                    }
+
                     tampilBeasiswa(beasiswa);
                     break;
                 case 0:
@@ -306,7 +308,36 @@ public class Tugas {
                     insertRegular(regular, "RGL");
                     break;
                 case 2:
-                    System.out.println("Data Mahasiswa");
+                    if (beasiswa[1][0] != null) {
+                        System.out.println("NoDaftar\tNIK\tNama\tJK\tAgama\tNISN\tAlamat\tNilai UTBK\tStatus\tJurusan");
+                        System.out.println("Urutkan Berdasar!");
+                        System.out.println("1. No Daftar");
+                        System.out.println("2. Nama");
+                        System.out.println("3. NIK");
+                        System.out.println("4. Nisn");
+                        System.out.println("5. Nilai UTBK");
+                        System.out.print("Pilih(1-5): ");
+                        int a = input.nextInt();
+                        switch (a) {
+                            case 1:
+                                urutkan(beasiswa, 0);
+                                break;
+                            case 2:
+                                urutkan(beasiswa, 2);
+                                break;
+                            case 3:
+                                urutkan(beasiswa, 1);
+                                break;
+                            case 4:
+                                urutkan(beasiswa, 5);
+                                break;
+                            case 5:
+                                urutkan(beasiswa, 7);
+                                break;
+                            default:
+                                System.out.println("Opsi tidak ada");
+                        }
+                    }
                     tampilRegular(regular);
                     break;
                 case 0:
@@ -333,67 +364,30 @@ public class Tugas {
         return re;
     }
 
-    public static String[][] urutkan(String array[][], int u) {
-        judul("Urutan data Mahasiswa");
-
-        int flag;
-        String temp[] = new String[array.length];
-        int k = 0;
-        while (array[k][0] != null) {
-            k++;
-        }
-        // if (a.equals("asc")) {
-
-        // for (int i = 0; i < array.length; i++) {
-        // flag = i;
-        // for (int j = i + 1; j < array.length; j++) {
-        // if (Integer.parseInt(array[j][u]) < Integer.parseInt(array[flag][u]))
-        // flag = j;
-        // }
-        // if (flag != 1) {
-        // for (int j = 0; j < temp.length; j++)
-        // temp[j] = array[i][j];
-        // for (int j = 0; j < temp.length; j++)
-        // array[i][j] = array[flag][j];
-        // for (int j = 0; j < temp.length; j++)
-        // array[flag][j] = temp[j];
-        // }
-        // }
-        if (u == 0) {
-            for (int i = 0; i < k + 1; i++) {
-                flag = i;
-                for (int j = i + 1; j < k + 1; j++) {
-                    if (Integer.parseInt(array[j][u].substring(3)) < Integer.parseInt(array[flag][u].substring(3)))
-                        flag = j;
-                }
-                if (flag != 1) {
-                    for (int j = 0; j < temp.length; j++)
-                        temp[j] = array[i][j];
-                    for (int j = 0; j < temp.length; j++)
-                        array[i][j] = array[flag][j];
-                    for (int j = 0; j < temp.length; j++)
-                        array[flag][j] = temp[j];
-                }
+    public static String[][] urutkan(String array[][], int colmn) {
+        int flag, h = 0;
+        String temp[] = new String[3];
+        for (int k = 0; k < array.length; k++) {
+            if (array[k][0] != null) {
+                h++;
             }
-        } else {
-            for (int i = 0; i < k + 1; i++) {
-                flag = i;
-                for (int j = i + 1; j < k + 1; j++) {
-                    if (Integer.parseInt(array[j][u]) < Integer.parseInt(array[flag][u]))
-                        flag = j;
-                }
-                if (flag != 1) {
-                    for (int j = 0; j < temp.length; j++)
-                        temp[j] = array[i][j];
-                    for (int j = 0; j < temp.length; j++)
-                        array[i][j] = array[flag][j];
-                    for (int j = 0; j < temp.length; j++)
-                        array[flag][j] = temp[j];
-                }
+        }
+        for (int i = 0; i < h; i++) {
+            flag = i;
+            for (int j = i + 1; j < h; j++) {
+                if (array[j][colmn].compareTo(array[flag][colmn]) < 0)
+                    flag = j;
+            }
+            if (flag != 1) {
+                for (int j = 0; j < temp.length; j++)
+                    temp[j] = array[i][j];
+                for (int j = 0; j < temp.length; j++)
+                    array[i][j] = array[flag][j];
+                for (int j = 0; j < temp.length; j++)
+                    array[flag][j] = temp[j];
             }
         }
         return array;
-
     }
 
     public static void input() {
